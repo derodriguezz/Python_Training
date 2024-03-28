@@ -13,6 +13,7 @@ def create_rounded_rectangle(canvas, x1, y1, x2, y2, radius=25, **kwargs):
     canvas.create_arc(x2 - radius * 2, y2 - radius * 2, x2, y2, start=270, extent=90, style=ARC, **kwargs)
     canvas.create_arc(x1, y2 - radius * 2, x1 + radius * 2, y2, start=180, extent=90, style=ARC, **kwargs)
     # Dibuja los lados rectos
+    
     canvas.create_line(x1 + radius, y1, x2 - radius, y1, **kwargs)
     canvas.create_line(x1 + radius, y2, x2 - radius, y2, **kwargs)
     canvas.create_line(x1, y1 + radius, x1, y2 - radius, **kwargs)
@@ -31,11 +32,11 @@ root.iconphoto(False, image_icon)
 
 # Sidebar
 color_box = PhotoImage(file="bar_icon.png")
-Label(root, image=color_box, bg="#f2f3f5").place(x=10, y=15)
+Label(root, image=color_box, bg="#f2f3f5").place(x=10, y=30)
 
 # eraser
 eraser = PhotoImage(file="eraser_icon.png")
-Button(root, image = eraser, bg = "#f2f3f5").place(x=30,y=450)
+Button(root, image = eraser, bg = "#f2f3f5").place(x=35,y=415)
 
 ###color
 colors = Canvas(root, bg = "#fff", width = 37, height = 300, bd=0)
