@@ -36,7 +36,12 @@ Label(root, image=color_box, bg="#f2f3f5").place(x=10, y=30)
 
 # eraser
 eraser = PhotoImage(file="eraser_icon.png")
-Button(root, image = eraser, bg = "#f2f3f5").place(x=35,y=415)
+Button(root, image = eraser, bg = "#f2f3f5").place(x=35,y=390)
+
+# import image
+importimage = PhotoImage(file="add_image.png")
+Button(root, image = importimage, bg="white").place(x=35, y=430)
+
 
 ###color
 colors = Canvas(root, bg = "#fff", width = 37, height = 300, bd=0)
