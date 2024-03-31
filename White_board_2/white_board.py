@@ -26,6 +26,30 @@ root.geometry("1050x570+150+50")
 root.config(bg="#f2f3f5")
 root.resizable(False, False)
 
+
+current_x = 0
+current_y = 0
+color = 'black'
+
+def locate_xy(work):
+
+    current_x = work.x
+    current_y = work.y
+
+def addline(work):
+    pass
+
+def show_color(new_color):
+    global color
+
+    color = new_color
+
+
+def new_canvas():
+    canvas.delete('all')
+    display_pallete()
+
+
 # Icon
 image_icon = PhotoImage(file="pen_icon1.png")
 root.iconphoto(False, image_icon)
@@ -36,7 +60,7 @@ Label(root, image=color_box, bg="#f2f3f5").place(x=10, y=30)
 
 # eraser
 eraser = PhotoImage(file="eraser_icon.png")
-Button(root, image = eraser, bg = "#f2f3f5").place(x=35,y=390)
+Button(root, image = eraser, bg = "#f2f3f5", command=new_canvas).place(x=35,y=390)
 
 # import image
 importimage = PhotoImage(file="add_image.png")
@@ -81,7 +105,26 @@ display_pallete()
 canvas = Canvas(root, width=930, height=500, background="white", cursor="hand2")
 canvas.place(x=100, y=10)
 
-# Dibuja un rectángulo con esquinas redondeadas
-create_rounded_rectangle(canvas, 10, 10, 920, 490, radius=24, outline="#d7d7d7")
+canvas.bind('<Button-1>', locate_xy)
+canvas.bind('<B1-Motion-1>', addline)
+
+
+###Slider###
+
+current_value = tk.DoubleVar()
+def get_current_value():
+    pass
+
+def slider_changed(event):
+    value_label.configure(text=get_current_value())
+    
+
+slider = ttk.Scale(root, from_=0, to = 100, orient = "horizontal", command=slider_changed, variable=current_value)
+slider.place(x=30, y=530)
+
+
+value_label=ttk.Label(root, text=get_current_value())
+value_label.place(x=27, y= 550)
+
 
 root.mainloop()
