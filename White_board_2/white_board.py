@@ -111,14 +111,14 @@ canvas = Canvas(root, width=930, height=500, background="white", cursor="hand2")
 canvas.place(x=100, y=10)
 
 canvas.bind('<Button-1>', locate_xy)
-canvas.bind('<B1-Motion-1>', addline)
+canvas.bind('<B1-Motion>', addline)
 
 
 ###Slider###
 
 current_value = tk.DoubleVar()
 def get_current_value():
-    pass
+    return '{:.2f}'.format(current_value.get())
 
 def slider_changed(event):
     value_label.configure(text=get_current_value())
