@@ -55,6 +55,24 @@ def new_canvas():
     display_pallete()
 
 
+def insertimage():
+    global filename
+    global f_img
+
+    filename = filedialog.askopenfilename(initialdir = os.getcwd(), title = "Select image file",
+                                          filetype = (("PNG file", "*.png"), ("All file","new.txt")))
+
+    f_img=tk.PhotoImage(file=filename)
+    my_img = canvas.create_image(180, 50,image = f_img)
+    root.bind("<B3-Motion>", my_callback)
+
+    
+def my_callback(event):
+    global f_img
+
+    f_img=tk.PhotoImage(file = filename)
+    my_img = canvas.create_image(event.x, event.y, image = f_img)
+
 # Icon
 image_icon = PhotoImage(file="pen_icon1.png")
 root.iconphoto(False, image_icon)
@@ -69,7 +87,7 @@ Button(root, image = eraser, bg = "#f2f3f5", command=new_canvas).place(x=35,y=39
 
 # import image
 importimage = PhotoImage(file="add_image.png")
-Button(root, image = importimage, bg="white").place(x=35, y=430)
+Button(root, image = importimage, bg="white", command = insertimage).place(x=35, y=430)
 
 
 ###color
